@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "ExtensionV3",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "static/images/icon.png"
+  },
+  "icons": {
+    "16": "static/images/icon.png",
+    "32": "static/images/icon.png",
+    "48": "static/images/icon.png",
+    "128": "static/images/icon.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["https://blog.csdn.net/*","https://passport.bjx.com.cn/*","https://yun.bjx.com.cn/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["static/images/*", "scripts/*"],
+      "matches": ["http://*/*", "https://*/*", "https://blog.csdn.net/*","https://yun.bjx.com.cn/*","https://passport.bjx.com.cn/*"]
+    }
+  ],
+  "permissions": ["storage", "activeTab", "scripting", "notifications", "tabs"],
+  "host_permissions": ["https://blog.csdn.net/*","https://passport.bjx.com.cn/*","https://yun.bjx.com.cn/*"],
+  "externally_connectable": {
+    "matches": ["https://blog.csdn.net/*","https://passport.bjx.com.cn/*","https://yun.bjx.com.cn/*"]
+  }
+}
